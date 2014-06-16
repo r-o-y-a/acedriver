@@ -1,0 +1,202 @@
+//
+//  MainViewController.m
+//  Driving
+//
+//  Created by Roya Naini on 12/12/08.
+//  Copyright __MyCompanyName__ 2008. All rights reserved.
+//
+
+#import "MainViewController.h"
+#import "MainView.h"
+#import "userCar.h"
+
+@implementation MainViewController
+
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    
+	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad {
+	
+	// create the main content view
+	UIView *contentView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	contentView.backgroundColor = [UIColor blackColor];
+	
+	// display the road animation
+	NSArray *carImages = [NSArray arrayWithObjects:
+						  [UIImage imageNamed:@"road1.png"],
+						  [UIImage imageNamed:@"road2.png"],
+						  [UIImage imageNamed:@"road3.png"],
+						  [UIImage imageNamed:@"road4.png"],
+						  [UIImage imageNamed:@"road5.png"],
+						  [UIImage imageNamed:@"road6.png"],
+						  [UIImage imageNamed:@"road7.png"],
+						  [UIImage imageNamed:@"road8.png"],
+						  [UIImage imageNamed:@"road9.png"],
+						  [UIImage imageNamed:@"road10.png"],
+						  [UIImage imageNamed:@"road11.png"],
+						  [UIImage imageNamed:@"road12.png"],
+						  [UIImage imageNamed:@"road13.png"],			  
+						  nil];
+	
+	UIImageView *road = [UIImageView alloc];
+    [road initWithFrame:[contentView bounds]];
+	road.animationImages = carImages;
+	road.animationDuration = 0.25; // seconds
+	road.animationRepeatCount = 0; // 0 = loops forever
+	[road startAnimating];
+	[contentView addSubview:road];
+    [road release];	
+	
+	self.view = contentView;
+	[contentView release];
+	
+	
+	// display top shelf
+	CGRect topShelfRect = CGRectMake(0.0f, 0.0f, 320.0f, 80.0f);
+	UIImageView *topShelf = [[UIImageView alloc] initWithFrame:topShelfRect];;
+	[topShelf setImage:[UIImage imageNamed:@"bottomshelf.png"]];
+	[self.view addSubview:topShelf];
+	[topShelf release];
+	
+	// display bottom shelf
+	CGRect bottomShelfRect = CGRectMake(0.0f, 380.0f, 320.0f, 80.0f);
+	UIImageView *bottomShelf = [[UIImageView alloc] initWithFrame:bottomShelfRect];;
+	[bottomShelf setImage:[UIImage imageNamed:@"bottomshelf.png"]];
+	[self.view addSubview:bottomShelf];
+	[bottomShelf release];	
+	
+	
+	// display the user car and knob last so that it is on top of everything (55 x 194)
+	CGRect dragRect = CGRectMake(0.0f, 0.0f, 55.0f, 194.0f);
+	dragRect.origin = CGPointMake(130,260);
+	dragger = [[userCar alloc] initWithFrame:dragRect];
+	[dragger setImage:[UIImage imageNamed:@"usercar.png"]];
+	[dragger setUserInteractionEnabled:YES];
+	[dragger setTag:1];
+	[self.view addSubview:dragger];
+	[dragger release];
+		
+	// release an oncoming car every second
+	[self toggleReleasingCars];
+	
+	// check periodically for a curbside collision
+	[self toggleCheckCurbCollision];
+}
+
+-(void) toggleReleasingCars {
+	if (releaseCarsBool == @"off") {
+		[releaseCarsTimer invalidate];
+		releaseCarsBool = @"on";
+	}
+	else {
+		releaseCarsTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(showOncomingCar) userInfo:nil repeats:YES];
+		releaseCarsBool = @"off";
+	}
+}
+
+
+-(void) toggleCheckCurbCollision {
+	if (curbCollisionBool == @"off") {
+		[curbCollisionTimer invalidate];
+		curbCollisionBool = @"on";
+	}
+	else {
+		curbCollisionTimer = [NSTimer scheduledTimerWithTimeInterval:.10 target:self selector:@selector(checkCurbCollision:) userInfo:dragger repeats:YES];
+		curbCollisionBool = @"off";
+	}
+} 
+
+
+-(void) showOncomingCar {
+	
+	// initialize the car with a graphic and lane position
+	NSString *whichCar = [[NSArray arrayWithObjects:@"orangeFlower.png", @"blueFlower.png", nil] objectAtIndex:(arc4random() % 2)];
+	NSString *whichLane = [[NSArray arrayWithObjects: @"first", @"second", nil] objectAtIndex:(arc4random() % 2)];
+	
+	float carSpeed;
+	CGRect carRect;
+	
+	if (whichLane == @"first") {
+		carRect = CGRectMake(100, -100, 64, 64);
+	}
+	else {
+		carRect = CGRectMake(170, -100, 64, 64);
+	}
+	
+	if (whichCar == @"orangeFlower.png") {
+		carSpeed = .08;
+	}
+	else if (whichCar == @"blueFlower.png") {
+		carSpeed = .10;	
+	}
+	
+	UIImageView *car = [[UIImageView alloc] initWithFrame:carRect];
+	[car setImage:[UIImage imageNamed:whichCar]];
+	
+	[NSTimer scheduledTimerWithTimeInterval:carSpeed target:self selector:@selector(moveOncomingCar:) userInfo:car repeats:YES];
+	
+	// insert the oncoming car underneath the shelves and user's car
+	[self.view insertSubview:car atIndex:1];
+	[car release];
+	
+	[whichLane release];
+	[whichCar release];
+}
+
+
+-(void)moveOncomingCar:(NSTimer*)timer {
+	
+	// set the car's new coordinates -- "[timer userInfo]" returns UIImageView (which is the car object)
+	CGRect carRect = CGRectMake([[timer userInfo] layer].frame.origin.x, [[timer userInfo] layer].frame.origin.y+20, [[timer userInfo] layer].frame.size.width, [[timer userInfo] layer].frame.size.height);
+	[[timer userInfo] setFrame:carRect];
+	
+	for(UIImageView *anImage in [self.view subviews]) {
+		// check if this is the user's car
+		if (anImage.tag == 1) {
+			
+			// squeeze the rect size of the car/knob to the actual collision area
+			CGRect userCarRect;
+			userCarRect = CGRectInset(anImage.frame, 10, 0);
+			userCarRect = CGRectMake(anImage.frame.origin.x, anImage.frame.origin.y+40, userCarRect.size.width, 40);
+			
+			if (CGRectIntersectsRect(userCarRect, carRect)) {
+				[anImage didCollide];
+			}
+		}
+	}
+	
+	// stop the timer once the car is off-screen
+	if (carRect.origin.y > 500) {
+		[timer invalidate];
+	}
+}
+
+-(void)checkCurbCollision:(NSTimer*)timer {
+	
+	UIImageView *car = [UIImage alloc];
+	car = [timer userInfo];
+	
+	// check beyond the left and right curb boundries
+	if ( (car.frame.origin.x < 85) || (car.frame.origin.x > 200) ) {
+		[[timer userInfo] didCollide];
+	}
+}
+
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
+- (void)dealloc {
+    [super dealloc];
+}
+
+
+@end

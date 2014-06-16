@@ -1,0 +1,41 @@
+8
+
+dir
+10
+http://querp.unfuddle.com/svn/querp_iphonecode/Driving/build/Debug-iphonesimulator/Driving.app.dSYM/Contents/Resources/DWARF
+http://querp.unfuddle.com/svn/querp_iphonecode
+
+
+
+2008-12-10T23:04:51.571459Z
+2
+roya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+76b8c6e9-fdd6-431d-83f5-46d0c72cd804
+
+Driving
+file
+
+
+
+
+2008-12-14T06:50:28.000000Z
+bf173fbada26985a585ec0ba0562ddd3
+2008-12-10T23:04:51.571459Z
+2
+roya
+has-props
+

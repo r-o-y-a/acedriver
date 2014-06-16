@@ -1,0 +1,43 @@
+8
+
+dir
+10
+http://querp.unfuddle.com/svn/querp_iphonecode/Driving/build/Debug-iphonesimulator/Driving.app.dSYM/Contents
+http://querp.unfuddle.com/svn/querp_iphonecode
+
+
+
+2008-12-10T23:04:51.571459Z
+2
+roya
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+76b8c6e9-fdd6-431d-83f5-46d0c72cd804
+
+Info.plist
+file
+
+
+
+
+2008-12-14T06:50:28.000000Z
+5b6a9bf9792a39a32c2a838d8d90e3f2
+2008-12-10T23:04:51.571459Z
+2
+roya
+
+Resources
+dir
+

@@ -1,0 +1,5 @@
+/Users/roya/Desktop/iPhoneDev/Driving/Classes/userCar.m: In function '-[userCar touchesMoved:withEvent:]':
+/Users/roya/Desktop/iPhoneDev/Driving/Classes/userCar.m:37: warning: 'userCar' may not respond to '-didCollide'
+/Users/roya/Desktop/iPhoneDev/Driving/Classes/userCar.m:37: warning: (Messages without a matching method signature
+/Users/roya/Desktop/iPhoneDev/Driving/Classes/userCar.m:37: warning: will be assumed to return 'id' and accept
+/Users/roya/Desktop/iPhoneDev/Driving/Classes/userCar.m:37: warning: '...' as arguments.)

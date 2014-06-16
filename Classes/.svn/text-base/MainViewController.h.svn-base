@@ -1,0 +1,21 @@
+//
+//  MainViewController.h
+//  Driving
+//
+//  Created by Roya Naini on 12/12/08.
+//  Copyright __MyCompanyName__ 2008. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import <QuartzCore/CAAnimation.h>
+#import "userCar.h"
+
+@interface MainViewController : UIViewController {
+	NSTimer* releaseCarsTimer;
+	NSString* releaseCarsBool;
+	NSTimer* curbCollisionTimer;
+	NSString* curbCollisionBool;
+	userCar* dragger;
+}
+
+@end

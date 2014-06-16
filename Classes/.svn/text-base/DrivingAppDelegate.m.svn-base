@@ -1,0 +1,32 @@
+//
+//  DrivingAppDelegate.m
+//  Driving
+//
+//  Created by Roya Naini on 12/12/08.
+//  Copyright __MyCompanyName__ 2008. All rights reserved.
+//
+
+#import "DrivingAppDelegate.h"
+#import "RootViewController.h"
+
+@implementation DrivingAppDelegate
+
+
+@synthesize window;
+@synthesize rootViewController;
+
+
+- (void)applicationDidFinishLaunching:(UIApplication *)application {
+    
+    [window addSubview:[rootViewController view]];
+    [window makeKeyAndVisible];
+}
+
+
+- (void)dealloc {
+    [rootViewController release];
+    [window release];
+    [super dealloc];
+}
+
+@end
