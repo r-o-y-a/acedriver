@@ -463,7 +463,8 @@
 }
 
 -(void)checkCurbCollision:(NSTimer*)timer {
-	DrivingAppDelegate *appDelegate = (DrivingAppDelegate *)[[UIApplication sharedApplication] delegate];
+	/*
+     DrivingAppDelegate *appDelegate = (DrivingAppDelegate *)[[UIApplication sharedApplication] delegate];
 	
 	UIImageView *car = [UIImage init];
 	car = [timer userInfo];
@@ -478,7 +479,9 @@
 			//NSLog(@"new high score! %i", appDelegate.highScore);
 		}		
 		appDelegate.currentScore = 0;
+     
 	}
+     */
 }
 
 - (void) checkUserMadeHighScoreWrapper {
