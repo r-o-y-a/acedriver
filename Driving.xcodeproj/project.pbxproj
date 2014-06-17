@@ -21,7 +21,6 @@
 		289233AF0DB2D0DB0083E9F9 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AB0DB2D0DB0083E9F9 /* RootViewController.m */; };
 		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
 		74D9A6D80EF3376A00242D6F /* click.wav in Resources */ = {isa = PBXBuildFile; fileRef = 74D9A6C50EF3376A00242D6F /* click.wav */; };
-		74D9A6DE0EF3378000242D6F /* userCar.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D9A6DC0EF3378000242D6F /* userCar.m */; };
 		74D9A6F20EF338E100242D6F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74D9A6F10EF338E100242D6F /* AudioToolbox.framework */; };
 		B03D342B0F411F270091D7EC /* usercar.png in Resources */ = {isa = PBXBuildFile; fileRef = B03D342A0F411F270091D7EC /* usercar.png */; };
 		B03D35A80F426B3F0091D7EC /* about_background.png in Resources */ = {isa = PBXBuildFile; fileRef = B03D35A70F426B3F0091D7EC /* about_background.png */; };
@@ -78,6 +77,8 @@
 		B0C64CF30F4BCE4F009B46B3 /* crash.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0C64CF20F4BCE4F009B46B3 /* crash.wav */; };
 		B0C64D150F4BD558009B46B3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C64D140F4BD558009B46B3 /* AVFoundation.framework */; };
 		B0D1FED00F462141004183BF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B0D1FECF0F462141004183BF /* Default.png */; };
+		B0E88FB21950A78000FF4FD5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B0E88FB11950A78000FF4FD5 /* Default-568h@2x.png */; };
+		B0E88FB31950A81700FF4FD5 /* userCar.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D9A6DC0EF3378000242D6F /* userCar.m */; };
 		B0EFD6070F1C33FB00B42D21 /* PlistSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = B0EFD6060F1C33FB00B42D21 /* PlistSettings.m */; };
 /* End PBXBuildFile section */
 
@@ -165,6 +166,7 @@
 		B0C64CF20F4BCE4F009B46B3 /* crash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = crash.wav; sourceTree = "<group>"; };
 		B0C64D140F4BD558009B46B3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B0D1FECF0F462141004183BF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		B0E88FB11950A78000FF4FD5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		B0EFD6050F1C33FB00B42D21 /* PlistSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlistSettings.h; sourceTree = "<group>"; };
 		B0EFD6060F1C33FB00B42D21 /* PlistSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlistSettings.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -242,6 +244,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				B0E88FB11950A78000FF4FD5 /* Default-568h@2x.png */,
 				B0D1FECF0F462141004183BF /* Default.png */,
 				B03D37190F43C6450091D7EC /* acedriver_logo.png */,
 				B05A1BC20F070ABF0018AA22 /* Entitlements.plist */,
@@ -410,6 +413,7 @@
 				B0B74BB80F3EB2FA0065A24C /* startButton_pressed.png in Resources */,
 				B0B74BB90F3EB2FA0065A24C /* startButton.png in Resources */,
 				B0B74BBA0F3EB2FA0065A24C /* scoreLabel.png in Resources */,
+				B0E88FB21950A78000FF4FD5 /* Default-568h@2x.png in Resources */,
 				B0B74BBC0F3EB2FA0065A24C /* redCar.png in Resources */,
 				B0B74BBD0F3EB2FA0065A24C /* greenCar.png in Resources */,
 				B0B74BBE0F3EB2FA0065A24C /* driveCarefully.png in Resources */,
@@ -462,6 +466,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0E88FB31950A81700FF4FD5 /* userCar.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* DrivingAppDelegate.m in Sources */,
 				289233A60DB2D0840083E9F9 /* FlipsideView.m in Sources */,
@@ -469,7 +474,6 @@
 				289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */,
 				289233AF0DB2D0DB0083E9F9 /* RootViewController.m in Sources */,
 				289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */,
-				74D9A6DE0EF3378000242D6F /* userCar.m in Sources */,
 				B0EFD6070F1C33FB00B42D21 /* PlistSettings.m in Sources */,
 				B07B01AC0F30230700EAB284 /* PostWorker.m in Sources */,
 			);

@@ -9,7 +9,7 @@
 #import "DrivingAppDelegate.h"
 #import "RootViewController.h"
 #import "PlistSettings.h"
-#import "Beacon.h"
+//#import "Beacon.h"
 
 @implementation DrivingAppDelegate
 
@@ -26,7 +26,7 @@
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 
 	// Pinch Media analytics
-	[NSThread detachNewThreadSelector: @selector(pinchMediaBeacon) toTarget: self withObject: nil];
+	//[NSThread detachNewThreadSelector: @selector(pinchMediaBeacon) toTarget: self withObject: nil];
 	
     [window addSubview:[rootViewController view]];
     [window makeKeyAndVisible];
@@ -102,12 +102,14 @@
 }
 
 
-- (void)pinchMediaBeacon {
+/*
+ - (void)pinchMediaBeacon {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	NSString *applicationCode = @"575514be059d301bbbc400c551c78d56";
 	[Beacon initAndStartBeaconWithApplicationCode:applicationCode useCoreLocation:NO useOnlyWiFi:NO];
 	[pool release];
 }
+*/
 
 - (void)changeHighScore:(int)newHighScore {
 	
@@ -139,7 +141,7 @@
 	[vibration release];
 	[sound release];
 	
-	[[Beacon shared] endBeacon];
+	//[[Beacon shared] endBeacon];
 }
 
 
